@@ -1,5 +1,5 @@
 class BookingsController < ApplicationController
-  before_action :require_login
+  # before_action :require_login
 
   def new
     @booking = current_user.bookings.new
