@@ -1,15 +1,31 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Meetingroom</title>
+    <title>Draft</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'true' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'true' %>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
   </head>
 
   <body>
+    <ul class="nav justify-content-center">
+        <% if signed_in? %>
+          <li class="nav-item"><%= link_to "Search Rooms", root_path, class: "nav-link" %></li>
+          <li class="nav-item"><%= link_to "My Bookings", my_bookings_path, class:"nav-link float-right" %></li>
+          <li class="nav-item"><%= link_to "Sign Out", sign_out_path, method: :delete, class:"nav-link float-right" %></li>
+        <% else %>
+          <li class="nav-item"><%= link_to 'Sign in', sign_in_path, class:"nav-link" %></li>
+        <% end %>
+    </ul>
+    <section class="container">
+      <div id="flash">
+        <% flash.each do |key, value| %>
+          <div class="alert alert-secondary"><%= value.to_s.html_safe %></div>
+        <% end %>
+      </div>
     <%= yield %>
+    </section>
   </body>
 </html>
