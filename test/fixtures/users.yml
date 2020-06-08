@@ -1,0 +1,5 @@
+testuser:
+  id: 1
+  email: "testuser@gmail.com"
+  encrypted_password: "111111"
+  remember_token: "1231234545"

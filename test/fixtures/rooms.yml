@@ -1,0 +1,34 @@
+one:
+  id: 1
+  unit: "1"
+  name: "Mustafar"
+  size: 5
+  hint: "Turn left from the pantry"
+
+two:
+  id: 2
+  unit: "2"
+  name: "Tatooine"
+  size: 5
+  hint: "Turn right from the pantry"
+
+three:
+  id: 3
+  unit: "3"
+  name: "Geonosis"
+  size: 8
+  hint: "Turn right from the money plant"
+
+four:
+  id: 4
+  unit: "4"
+  name: "Wobani"
+  size: 8
+  hint: "Turn left from the money plant"
+
+five:
+  id: 5
+  unit: "5"
+  name: "Eadu"
+  size: 10
+  hint: "Near big boss office"
