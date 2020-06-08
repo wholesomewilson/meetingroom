@@ -1,0 +1,59 @@
+<div class="card bg-light col-lg-8 offset-lg-2 mb-5">
+  <div class="card-header">
+    Past Bookings (Last 30days)
+  </div>
+  <div class="card-body">
+    <% if @past_bookings.count > 0 %>
+      <% @past_bookings.group(:start_date).count.each do |date, v| %>
+        <strong><%= date.strftime("%d-%m-%Y") %></strong>
+        <div class="timeslots_overflow">
+          <% @past_bookings.where(start_date: date).group(:room).count.each do |room, v| %>
+            <p>
+              <strong class="mr-3"><%= room.name %></strong>
+              <% @past_bookings.select { |booking| booking.room == room and booking.start_date == date }.each do |booking| %>
+                <%= booking.timeslot.start_time %> - <%= booking.timeslot.end_time %>
+              <% end %>
+            </p>
+          <% end %>
+        </div>
+      <% end %>
+    <% else %>
+      <h3>No past bookings</h3>
+    <% end %>
+  </div>
+</div>
+
+<div class="card bg-light col-lg-8 offset-lg-2">
+  <div class="card-header">
+    Bookings
+  </div>
+  <div class="card-body">
+    <% i = -1 %>
+    <% @current_bookings.group(:start_date).count.each do |date, v| %>
+        <strong><%= date.strftime("%d-%m-%Y") %></strong><br>
+        <% @current_bookings.where(start_date: date).group(:room).count.each do |room, v| %>
+          <div class="timeslots_overflow">
+            <p>
+            <strong class="mr-3"><%= room.name %></strong>
+              <% @current_bookings.select { |booking| booking.room == room and booking.start_date == date }.each do |booking| %>
+                <%= label_tag "", for: "booking_#{i+=1}" do %>
+                  <%= check_box_tag "", booking.id, false, {id: "booking_#{i}", class: "timeslots", data: {"booking_id" => booking.id}} %>
+                  <span class="mr-2"><%= booking.timeslot.start_time %> - <%= booking.timeslot.end_time %></span>
+                <% end %>
+              <% end %>
+            <p>
+          </div>
+        <% end %>
+    <% end %>
+    <div class="form-group mt-5">
+    <%= form_with url: "/bookings/transfer", method: "PATCH", html:{id: 'transfer_form', class: "booking_form"} do %>
+      <%= label "", "Transferee's Email" %>
+      <%= text_field :booking, :user_email, class:"email_field form-control" %>
+    <% end %>
+    </div>
+    <%= form_with url: "/bookings/cancel", html:{id: 'cancel_form', class: "booking_form"} do %>
+      <%= button_tag "Cancel Booking", type: "button", class: "btn btn-primary float-right ml-3", disabled: true, id: "cancel_button" %>
+    <% end %>
+    <%= button_tag "Transfer", class: "btn btn-primary float-right ml-3", disabled: true, id: "transfer_button" %>
+  </div>
+</div>

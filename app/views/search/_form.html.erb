@@ -1,0 +1,30 @@
+<div class="card bg-light col-lg-8 offset-lg-2">
+  <div class="card-header">
+    Search for Rooms
+  </div>
+  <div class="card-body">
+    <%= form_with url: search_room_path, local: true, method: "GET", html:{class: "booking_form"} do %>
+      <p>
+        <%= label "", "Number of Attendees" %>
+        <%= number_field :booking, :size, in: 1..20, step: 1, class: "form-control input-lg" %>
+      </p>
+      <p>
+        <%= label "", "Start Date" %>
+        <%= text_field :booking, :start_date, class:"date_field form-control", readonly: true %>
+      </p>
+      <p>
+        <%= label "", "End Date" %>
+        <%= text_field :booking, :end_date, class:"date_field form-control", readonly: true %>
+      </p>
+      <p>
+        <%= label "", "Start Time" %>
+        <%= select_tag "booking[start_time]", options_for_select(get_start_timeslots, "07:00"), {class:"form-control"} %>
+      </p>
+      <p>
+        <%= label "", "End Time" %>
+        <%= select_tag "booking[end_time]", options_for_select(get_end_timeslots, "07:30"), {class:"form-control"} %>
+      </p>
+      <%= submit_tag "Search", class: "btn btn-primary float-right" %>
+    <% end %>
+  </div>
+</div>

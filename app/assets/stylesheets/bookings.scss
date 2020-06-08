@@ -1,0 +1,96 @@
+// Place all the styles related to the Bookings controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.datepicker{
+  table {
+    width: 100%;
+    height: 100%;
+  }
+  td{
+    height: 43px!important;
+  }
+  position: fixed !important;
+  width: 400px;
+  height: 370px;
+  top: 50% !important;
+  left: 50% !important;
+  margin-top: -130px !important;
+  transform: translateX(-50%);
+}
+
+.datepicker-days{
+  position: fixed !important;
+  width: 380px;
+  height: 340px;
+  left: 51.1% !important;
+  transform: translateX(-50%);
+}
+
+
+.datepicker table tr td.disabled{
+  color: #e3e3e3!important;
+}
+
+.datepicker table tr td.disabled:hover{
+  background-color: #fff!important;
+}
+
+.datepicker table tr td:hover{
+  background-color: #c37dcf!important;
+}
+
+.search_title{
+  background-color: #ebd3ef;
+  padding: 10px;
+  border-radius: 5px;
+  color: #7a7a7a;
+}
+
+.card-offset{
+  margin-left: 34.7%;
+}
+
+.nav{
+  padding: 20px;
+}
+
+.nav-link{
+  font-size: 18px;
+}
+
+label{
+  font-size: 15px!important;
+  color: black!important;
+}
+
+.form-control[readonly]{
+  color: black!important;
+}
+
+.btn{
+  min-width: 3rem!important;
+}
+
+.show{
+  min-height: 320px;
+}
+
+.float_right_wrapper{
+  width: 100%;
+  text-align: right;
+}
+
+#booking_form{
+  position: fixed;
+  bottom: 1%;
+  right: 5%;
+}
+
+.timeslots_overflow{
+  overflow-x: scroll;
+  white-space: nowrap;
+  width: 100%;
+  // height: 35px;
+  padding: 5px 0 15px;
+}
