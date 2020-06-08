@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  room: one
+  timeslot: one
+  start_date: 2020-06-08 23:15:16
+
+two:
+  user: two
+  room: two
+  timeslot: two
+  start_date: 2020-06-08 23:15:16
