@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Draft</title>
+    <title>Book a Room</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'true' %>
@@ -11,11 +11,12 @@
 
   <body>
     <ul class="nav justify-content-center">
-        <% if signed_in? %>
-          <li class="nav-item"><%= link_to "Search Rooms", root_path, class: "nav-link" %></li>
-          <li class="nav-item"><%= link_to "My Bookings", my_bookings_path, class:"nav-link float-right" %></li>
-          <li class="nav-item"><%= link_to "Sign Out", sign_out_path, method: :delete, class:"nav-link float-right" %></li>
-        <% end %>
+      <%= image_tag('logo.png', size:"65x65", class:"float-left") %>
+      <% if signed_in? %>
+        <li class="nav-item ml-3 mt-3"><%= link_to "Search Rooms", root_path, class: "nav-link" %></li>
+        <li class="nav-item mt-3"><%= link_to "My Bookings", my_bookings_path, class:"nav-link float-right" %></li>
+        <li class="nav-item mt-3"><%= link_to "Sign Out", sign_out_path, method: :delete, class:"nav-link float-right" %></li>
+      <% end %>
     </ul>
     <section class="container">
       <div id="flash">
