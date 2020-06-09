@@ -83,7 +83,9 @@ Upon unchecking the box, the same 3 hidden input will be removed using it's unqi
 
 Params will be nested in the following hash structure. For the random key, I use epoch but it could be anything (e.g. running nums).
 ```
-{ bookings : { "random unique key": { 
+{ 
+  bookings : { 
+               "random unique key": { 
                                         timeslot_id: "",
                                         room_id:     "",
                                         start_date:  ""
@@ -158,7 +160,7 @@ server {
 
 ### In case you're wondering
 
-I run two dockers with two droplets. One for staging environment and the other for prod environment. Even though both are running the same codes now, I feel much safer to experiment new tech or new ways of doing things in the staging environment without worrying about potential irreversible damages.
+I run two dockers with two droplets. One for staging environment and the other for prod environment. Even though both are running the same codes now, I feel much safer to experiment new tech or new ways of doing things in the staging environment without worrying about potential irreversible changes.
 
 http://165.22.38.63/ - prod
 
