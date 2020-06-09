@@ -120,3 +120,46 @@ def booking_params(params)
   params.permit(:room_id, :timeslot_id, :start_date)
 end
 ```
+
+## Something Extra
+
+### Using a nginx server to reduce time for first load
+
+The long initial loading time will definitely trigger some of our users on their worst days. This is because rails has to pre-compile and serve the assets to the client for the first time our users load our page. Rails is good at handling business and produce dynamic informations. However, serving files is not its forte. Nginx will handle the serving of assets to the clients and leave rails to do its own stuff.
+
+Curtains down, and enters **Nginx!**
+1. Copy the assets in the public folder and paste them in the environment (VMs or Dockers) where nginx has access to. (e.g. /usr/share/nginx/html)
+
+2. Change the configuration of /etc/nginx/conf.d/default.conf to the following code
+```
+server {
+  listen 80;
+
+  # Properly server assets
+  location ~ ^/(assets)/ {
+    root /usr/share/nginx/html;
+    gzip_static on;
+    expires max;
+    add_header Cache-Control public;
+    add_header ETag "";
+  }
+
+  # Proxy request to rails app
+  location / {
+    proxy_set_header Host $host;
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_pass_header Set-Cookie;
+    proxy_pass http://app:3000;
+  }
+}
+```
+
+3. Curtain down, it's a wrap.
+
+### In case you're wondering
+
+I run two dockers with two droplets. One for staging environment and the other for prod environment. Even though both are running the same codes now, I feel much safer to experiment new tech or new ways of doing things in the staging environment without worrying about potential irreversible damages.
+
+http://157.245.14.229/ - prod
+
+http://165.22.38.63/ - staging
