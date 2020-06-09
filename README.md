@@ -2,7 +2,7 @@
 
 Ruby on Rails, jQuery, HTML, CSS, Docker.
 
-Dockerized and deployed on Digital Ocean - http://157.245.14.229:3000/
+Dockerized and deployed on Digital Ocean - http://157.245.14.229
 
 ## Assumptions
 
