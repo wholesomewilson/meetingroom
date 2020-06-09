@@ -2,7 +2,7 @@
 
 Ruby on Rails, jQuery, HTML, CSS, Docker.
 
-Dockerized and deployed on Digital Ocean - http://157.245.14.229
+Dockerized and deployed on Digital Ocean - http://165.22.38.63/
 
 ## Assumptions
 
@@ -160,6 +160,6 @@ server {
 
 I run two dockers with two droplets. One for staging environment and the other for prod environment. Even though both are running the same codes now, I feel much safer to experiment new tech or new ways of doing things in the staging environment without worrying about potential irreversible damages.
 
-http://157.245.14.229/ - prod
+http://165.22.38.63/ - prod
 
-http://165.22.38.63/ - staging
+http://157.245.14.229/ - staging
