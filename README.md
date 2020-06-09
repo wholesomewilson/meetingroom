@@ -82,7 +82,7 @@ Upon unchecking the box, the same 3 hidden input will be removed using it's unqi
 ### Handling multiple params in a nested hash
 
 Params will be nested in the following hash structure. For the random key, I use epoch but it could be anything (e.g. running nums).
-
+```
 { bookings : { "random unique key" : { 
                                       timeslot_id: "",
                                       room_id:     "",
@@ -95,7 +95,7 @@ Params will be nested in the following hash structure. For the random key, I use
                                      }
               }
 }
-
+```
 In our Bookings controller, we will iterate through this hash and apply a custom validation to check for double booking
 before creating the record.
 
@@ -104,6 +104,7 @@ Similarly, this approach is used for transfering and cancelling bookings in My B
 ### Security for Params
 This approach seems abit hacky and doesn't follow the "Rails Way". However, we can still achieve similar level of security by using Strong Parameters.
 
+```
 params[:booking].each do |key, value|
   @booking = current_user.bookings.new(booking_params(value))
   if validation fails
@@ -118,3 +119,4 @@ end
 def booking_params(params)
   params.permit(:room_id, :timeslot_id, :start_date)
 end
+```
