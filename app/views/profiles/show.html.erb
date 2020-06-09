@@ -7,7 +7,7 @@
       <% @past_bookings.group(:start_date).count.each do |date, v| %>
         <strong><%= date.strftime("%d-%m-%Y") %></strong>
         <div class="timeslots_overflow">
-          <% @past_bookings.where(start_date: date).group(:room).order(:start_date).order('start_date asc').count.each do |room, v| %>
+          <% @past_bookings.where(start_date: date).group(:room).count.each do |room, v| %>
             <p>
               <strong class="mr-3"><%= room.name %></strong>
               <% @past_bookings.select { |booking| booking.room == room and booking.start_date == date }.each do |booking| %>
