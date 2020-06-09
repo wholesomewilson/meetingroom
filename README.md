@@ -93,6 +93,7 @@ Params will be nested in the following hash structure. For the random key, I use
                                       start_date:  ""
                                      }
               }
+}
 
 In our Bookings controller, we will iterate through this hash and apply a custom validation to check for double booking
 before creating the record.
