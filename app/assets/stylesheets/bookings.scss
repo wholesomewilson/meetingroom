@@ -52,11 +52,12 @@
 }
 
 .nav{
-  padding: 20px;
+  padding: 20px!important;
 }
 
 .nav-link{
-  font-size: 18px;
+  padding: 0.25rem 0.5rem!important;
+  font-size: 15px;
 }
 
 label{
