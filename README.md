@@ -83,15 +83,15 @@ Upon unchecking the box, the same 3 hidden input will be removed using it's unqi
 
 Params will be nested in the following hash structure. For the random key, I use epoch but it could be anything (e.g. running nums).
 ```
-{ bookings : { "random unique key" : { 
-                                      timeslot_id: "",
-                                      room_id:     "",
-                                      start_date:  ""
+{ bookings : { "random unique key": { 
+                                        timeslot_id: "",
+                                        room_id:     "",
+                                        start_date:  ""
                                      },
-               "random unique key" : { 
-                                      timeslot_id: "",
-                                      room_id:     "",
-                                      start_date:  ""
+               "random unique key": { 
+                                        timeslot_id: "",
+                                        room_id:     "",
+                                        start_date:  ""
                                      }
               }
 }
