@@ -78,6 +78,7 @@ For each checkbox, it contains a unqiue id, value: timeslot.id, data-start_date:
 Upon checking the box, 3 hidden input will be appended to a form.
 Upon unchecking the box, the same 3 hidden input will be removed using it's unqiue id
 
+
 ### Handling multiple params in a nested hash
 
 Params will be nested in the following hash structure. For the random key, I use epoch but it could be anything (e.g. running nums).
@@ -99,3 +100,21 @@ In our Bookings controller, we will iterate through this hash and apply a custom
 before creating the record.
 
 Similarly, this approach is used for transfering and cancelling bookings in My Booking page.
+
+### Security for Params
+This approach seems abit hacky and doesn't follow the "Rails Way". However, we can still achieve similar level of security by using Strong Parameters.
+
+params[:booking].each do |key, value|
+  @booking = current_user.bookings.new(booking_params(value))
+  if validation fails
+    flash errors messages
+    redirect_back
+  end
+  @booking.save
+end
+
+*Strong Parameter to save the day! privately..*
+
+def booking_params(params)
+  params.permit(:room_id, :timeslot_id, :start_date)
+end
