@@ -2,33 +2,36 @@
 <% j =- 1 %>
 <%= hidden_field_tag "available_slots_count", @available_slots.count %>
 
-<div class="float_right_wrapper">
-  <button id="expand_or_collapse" class="btn btn-secondary mb-3">Expand All</button>
-</div>
-
-<% @available_slots.each do |room, date_slots| %>
-  <% j += 1 %>
-  <div class="card bg-light">
-    <div class="card-header" data-page=<%= j %> data-toggle="collapse" data-target="#collapseSlots-<%= j %>" aria-expanded="false" aria-controls="collapseExample-<%= j %>" ><%= room.name %></div>
-    <div class="card-body collapse" id="collapseSlots-<%= j %>">
-      <ul id="pagin-<%= j %>" class="pagination justify-content-center"></ul>
-      <% date_slots.each do |date, slots| %>
-        <div class="line-content-<%= j %>">
-          <strong><%= date %></strong>
-          <div class="timeslots_overflow">
-            <%= collection_check_boxes "", "", slots, :id, :check_box_name, {include_hidden: false} do |c| %>
-              <%= c.label for: "timeslot_id_#{i += 1}", class: "mr-2" do %>
-                <%= c.check_box id:"timeslot_id_#{i}", class: "timeslots", data: {"start_date" => date, "room_id" => room.id} %>
-                <%= c.text %>
-              <% end %>
-            <% end %>
-          </div>
-        </div>
-      <% end %>
-    </div>
+<% if @available_slots.count > 0 %>
+  <div class="float_right_wrapper">
+    <button id="expand_or_collapse" class="btn btn-secondary mb-3">Expand All</button>
   </div>
-<% end %>
+  <% @available_slots.each do |room, date_slots| %>
+    <% j += 1 %>
+    <div class="card bg-light">
+      <div class="card-header" data-page=<%= j %> data-toggle="collapse" data-target="#collapseSlots-<%= j %>" aria-expanded="false" aria-controls="collapseExample-<%= j %>" ><%= room.name %></div>
+      <div class="card-body collapse" id="collapseSlots-<%= j %>">
+        <ul id="pagin-<%= j %>" class="pagination justify-content-center"></ul>
+        <% date_slots.each do |date, slots| %>
+          <div class="line-content-<%= j %>">
+            <strong><%= date %></strong>
+            <div class="timeslots_overflow">
+              <%= collection_check_boxes "", "", slots, :id, :check_box_name, {include_hidden: false} do |c| %>
+                <%= c.label for: "timeslot_id_#{i += 1}", class: "mr-2" do %>
+                  <%= c.check_box id:"timeslot_id_#{i}", class: "timeslots", data: {"start_date" => date, "room_id" => room.id} %>
+                  <%= c.text %>
+                <% end %>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
 
-<%= form_with model: @booking, html:{id: 'booking_form'} do %>
-  <%= submit_tag "Submit", class: "btn btn-success btn-lg" %>
+  <%= form_with model: @booking, html:{id: 'booking_form'} do %>
+    <%= submit_tag "Submit", class: "btn btn-success btn-lg" %>
+  <% end %>
+<% else %>
+  <h3 class="text-center">No rooms are available!</h3>
 <% end %>
