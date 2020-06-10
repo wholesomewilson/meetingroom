@@ -74,7 +74,7 @@ In the Booking joint table, it will hold information on which room and timeslot 
 ## Approach for booking multiple rooms, multiple timeslots across multiple dates
 
 ### Selection Checkbox
-For each checkbox, it contains a unqiue id, value: timeslot.id, data-start_date: start_date, data-room_id: room.id
+For each checkbox, it contains a unqiue id, value: timeslot.id, data-start_date: start_date, data-room_id: room.id.
 Upon checking the box, 3 hidden input will be appended to a form.
 Upon unchecking the box, the same 3 hidden input will be removed using it's unqiue id
 
