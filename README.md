@@ -129,7 +129,7 @@ end
 
 The long initial loading time will definitely trigger some of our users on their worst days. This is because rails has to pre-compile and serve the assets to the client for the first time our users load our page. Rails is good at handling business and produce dynamic informations. However, serving files is not its forte. Nginx will handle the serving of assets to the clients and leave rails to do its own stuff.
 
-Curtains down, and enters **Nginx!**
+Curtains up, and enters **Nginx!**
 1. Copy the assets in the public folder and paste them in the environment (VMs or Dockers) where nginx has access to. (e.g. /usr/share/nginx/html)
 
 2. Change the configuration of /etc/nginx/conf.d/default.conf to the following code
